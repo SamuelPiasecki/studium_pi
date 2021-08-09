@@ -1,8 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/home/home.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:studium_pi/pages/login_page.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.indigo[800],
         fontFamily: 'Rubik',
       ),
-      home: Home(),
+      home: LoginPage(),
     );
   }
 }
