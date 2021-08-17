@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/disciplina.dart';
@@ -88,7 +89,7 @@ class NavDrawer extends StatelessWidget {
               leading: Icon(Icons.exit_to_app, color: Colors.white),
               title: Text('Logout',
                   style: TextStyle(color: Colors.white, fontSize: 15)),
-              onTap: () => {}),
+              onTap: () async => {await FirebaseAuth.instance.signOut()}),
         ],
       ),
     ));
