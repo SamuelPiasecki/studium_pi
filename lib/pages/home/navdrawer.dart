@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/disciplina.dart';
-import 'package:studium_pi/pages/evento.dart';
+import 'package:studium_pi/pages/eventos/evento_page.dart';
 import 'package:studium_pi/pages/home/config.dart';
 import 'package:studium_pi/pages/home/sobre.dart';
 import 'package:studium_pi/pages/meta.dart';
@@ -59,7 +59,7 @@ class NavDrawer extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 15)),
               onTap: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Evento()))
+                        MaterialPageRoute(builder: (context) => EventoPage()))
                   }),
           ListTile(
               title: Text('Notas',

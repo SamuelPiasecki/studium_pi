@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studium_pi/utilities/constants.dart';
 
 class Disciplina extends StatefulWidget {
   @override
@@ -11,12 +12,12 @@ class _DisciplinaState extends State<Disciplina> {
     final appBar = AppBar(
       title: Text('Disciplinas'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: colorAppBar,
     );
 
     return Scaffold(
       appBar: appBar,
-      backgroundColor: Colors.grey[800],
+      backgroundColor: colorBackgroundApp,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

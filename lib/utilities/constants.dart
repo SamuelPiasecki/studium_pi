@@ -25,3 +25,7 @@ final sBoxDecorationStyle = BoxDecoration(
     ),
   ],
 );
+
+final colorBackgroundApp = Colors.white;
+//Colors.grey[800];
+final colorAppBar = Colors.indigo[800];
