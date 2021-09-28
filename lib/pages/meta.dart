@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studium_pi/utilities/constants.dart';
 
 class Meta extends StatefulWidget {
   @override
@@ -11,12 +12,12 @@ class _MetaState extends State<Meta> {
     final appBar = AppBar(
       title: Text('Metas'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: colorAppBar,
     );
 
     return Scaffold(
       appBar: appBar,
-      backgroundColor: Colors.grey[800],
+      backgroundColor: colorBackgroundApp,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add, size: 50),

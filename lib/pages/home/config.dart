@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studium_pi/utilities/constants.dart';
 
 class Config extends StatefulWidget {
   @override
@@ -11,11 +12,11 @@ class _ConfigState extends State<Config> {
     final appBar = AppBar(
       title: Text('Configurações'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: colorAppBar,
     );
     return Scaffold(
       appBar: appBar,
-      backgroundColor: Colors.grey[800],
+      backgroundColor: colorBackgroundApp,
     );
   }
 }

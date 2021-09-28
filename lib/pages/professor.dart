@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studium_pi/utilities/constants.dart';
 
 class Professor extends StatefulWidget {
   @override
@@ -11,12 +12,12 @@ class _ProfessorState extends State<Professor> {
     final appBar = AppBar(
       title: Text('Professores'),
       centerTitle: true,
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: colorAppBar,
     );
 
     return Scaffold(
       appBar: appBar,
-      backgroundColor: Colors.grey[800],
+      backgroundColor: colorBackgroundApp,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add, size: 50),

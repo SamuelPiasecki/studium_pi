@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:studium_pi/pages/disciplina.dart';
+import 'package:studium_pi/pages/eventos/evento_page.dart';
 import 'package:studium_pi/pages/home/navdrawer.dart';
-import 'package:table_calendar/table_calendar.dart';
-
+import 'package:studium_pi/utilities/constants.dart';
+import 'package:studium_pi/widget/calendarwidget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,40 +13,53 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- // CalendarController _controller;
+  final isDialOpen = ValueNotifier(false);
 
-  @override
-
-  void initState(){
-    super.initState();
-   // _controller = CalendarController();
-  }
 
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: colorAppBar,
     );
 
-    return Scaffold(
-      drawer: NavDrawer(),
-      appBar: appBar,
-      backgroundColor: Colors.grey[800],
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return WillPopScope(
+      onWillPop: () async {
+        if(isDialOpen.value){
+          //close speed dial
+          isDialOpen.value = false;
+
+          return false;
+        } else{
+          return true;
+        }
+      },
+      child: Scaffold(
+        drawer: NavDrawer(),
+        appBar: appBar,
+        backgroundColor: colorBackgroundApp,
+        body: CalendarWidget(),
+        floatingActionButton: SpeedDial(
+          icon: Icons.add,
+          openCloseDial: isDialOpen,
           children: [
-            TableCalendar(
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
-              focusedDay: DateTime.now(),
-              )
+            SpeedDialChild(
+              child: Icon(Icons.event),
+              label: 'Eventos',
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EventoPage()))
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.calendar_today),
+              label: 'Disciplinas',
+              onTap: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Disciplina()))
+              },
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add, size: 50),
       ),
     );
   }
