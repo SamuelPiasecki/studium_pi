@@ -55,13 +55,6 @@ class NavDrawer extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Meta()))
                   }),
           ListTile(
-              title: Text('Eventos',
-                  style: TextStyle(color: Colors.white, fontSize: 15)),
-              onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => EventoPage()))
-                  }),
-          ListTile(
               title: Text('Notas',
                   style: TextStyle(color: Colors.white, fontSize: 15)),
               onTap: () => {
