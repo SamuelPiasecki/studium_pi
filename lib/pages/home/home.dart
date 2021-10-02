@@ -5,7 +5,7 @@ import 'package:studium_pi/pages/disciplina.dart';
 import 'package:studium_pi/pages/eventos/evento_page.dart';
 import 'package:studium_pi/pages/home/navdrawer.dart';
 import 'package:studium_pi/utilities/constants.dart';
-import 'package:studium_pi/widget/calendarwidget.dart';
+import 'package:studium_pi/widget/calendar_widget/calendarwidget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,7 +15,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final isDialOpen = ValueNotifier(false);
 
-
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
@@ -24,12 +23,12 @@ class _HomeState extends State<Home> {
 
     return WillPopScope(
       onWillPop: () async {
-        if(isDialOpen.value){
+        if (isDialOpen.value) {
           //close speed dial
           isDialOpen.value = false;
 
           return false;
-        } else{
+        } else {
           return true;
         }
       },

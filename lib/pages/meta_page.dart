@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:studium_pi/utilities/constants.dart';
-import 'package:studium_pi/widget/add_meta_dialog_widget.dart';
-import 'package:studium_pi/widget/meta_list_widget.dart';
+import 'package:studium_pi/widget/metas_widget/add_meta_dialog_widget.dart';
+import 'package:studium_pi/widget/metas_widget/completed_list_widget.dart';
+import 'package:studium_pi/widget/metas_widget/meta_list_widget.dart';
 
 class MetaPage extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _MetaPageState extends State<MetaPage> {
   Widget build(BuildContext context) {
     final tabs = [
       MetaListWidget(),
-      Container(),
+      CompletasWidget(),
     ];
     final appBar = AppBar(
       title: Text('Metas'),

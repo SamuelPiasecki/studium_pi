@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:studium_pi/model/meta.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
-import 'package:studium_pi/widget/meta_widget.dart';
+import 'package:studium_pi/widget/metas_widget/meta_widget.dart';
 
 class MetaListWidget extends StatelessWidget {
   @override

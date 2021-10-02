@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/model/event_data_source.dart';
 import 'package:studium_pi/provider/event_provider.dart';
-import 'package:studium_pi/widget/task_widget.dart';
+import 'package:studium_pi/widget/calendar_widget/task_widget.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalendarWidget extends StatelessWidget {
@@ -23,13 +23,13 @@ class CalendarWidget extends StatelessWidget {
         CalendarView.timelineWorkWeek
       ],
       controller: _controller,
-      onTap: (CalendarTapDetails details){
-        if(_controller.view == CalendarView.month &&
-            details.targetElement == CalendarElement.calendarCell){
+      onTap: (CalendarTapDetails details) {
+        if (_controller.view == CalendarView.month &&
+            details.targetElement == CalendarElement.calendarCell) {
           _controller.view = CalendarView.day;
-        } else if((_controller.view == CalendarView.week ||
-            _controller.view == CalendarView.workWeek) &&
-            details.targetElement == CalendarElement.viewHeader){
+        } else if ((_controller.view == CalendarView.week ||
+                _controller.view == CalendarView.workWeek) &&
+            details.targetElement == CalendarElement.viewHeader) {
           _controller.view = CalendarView.day;
         }
       },
