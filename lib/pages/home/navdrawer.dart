@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/disciplina.dart';
 import 'package:studium_pi/pages/home/config.dart';
-import 'package:studium_pi/pages/home/sobre.dart';
+import 'package:studium_pi/pages/sobre.dart';
 import 'package:studium_pi/pages/login/login_page.dart';
 import 'package:studium_pi/pages/meta_page.dart';
 import 'package:studium_pi/pages/nota.dart';

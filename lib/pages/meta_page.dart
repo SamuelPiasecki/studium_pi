@@ -34,7 +34,7 @@ class _MetaPageState extends State<MetaPage> {
       backgroundColor: Colors.white.withOpacity(0.9),
       //Arrumar isso aqui
       body: StreamBuilder<List<Meta>>(
-        stream: FirebaseApi.readMetas(),
+        // stream: FirebaseApi.readMetas(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:

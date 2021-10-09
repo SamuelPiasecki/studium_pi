@@ -13,13 +13,13 @@ class FirebaseApi {
 
     return docMeta.id;
   }
-
-  static Stream<List<Meta>> readMetas() => FirebaseFirestore.instance
+//Arrumar isso aqui
+  /*static Stream<List<Meta>> readMetas() => FirebaseFirestore.instance
       .collection('todo')
       .orderBy(MetaField.createdTime, descending: true)
       .snapshots()
       .transform(
           Utils.transformer(Meta.fromJson as Function(Map<String, dynamic>?))
               as StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
-                  List<Meta>>);
+                  List<Meta>>);*/
 }
