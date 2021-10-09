@@ -6,17 +6,12 @@ final sHintTextStyle = TextStyle(
 );
 
 final sLabelStyle = TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.bold,
-  fontFamily: 'Rubik',
-);
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Rubik',
+    fontSize: 18);
 
 final sBoxDecorationStyle = BoxDecoration(
-  border: Border(
-      bottom: BorderSide(
-    color: Colors.white,
-    width: 2.0,
-  )),
   boxShadow: [
     BoxShadow(
       color: Colors.black12,
@@ -29,3 +24,12 @@ final sBoxDecorationStyle = BoxDecoration(
 final colorBackgroundApp = Colors.white;
 //Colors.grey[800];
 final colorAppBar = Colors.indigo[800];
+
+final buttonStyle = ElevatedButton.styleFrom(
+  padding: EdgeInsets.all(10.0),
+  elevation: 5.0,
+  primary: Colors.white,
+  onPrimary: Colors.indigo[300],
+);
+
+final textStyleButton = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold);

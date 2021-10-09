@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/disciplina.dart';
-import 'package:studium_pi/pages/eventos/evento_page.dart';
 import 'package:studium_pi/pages/home/config.dart';
-import 'package:studium_pi/pages/home/sobre.dart';
-import 'package:studium_pi/pages/meta.dart';
+import 'package:studium_pi/pages/sobre.dart';
+import 'package:studium_pi/pages/login/login_page.dart';
+import 'package:studium_pi/pages/meta_page.dart';
 import 'package:studium_pi/pages/nota.dart';
 import 'package:studium_pi/pages/professor.dart';
 
@@ -52,7 +52,7 @@ class NavDrawer extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 15)),
               onTap: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Meta()))
+                        MaterialPageRoute(builder: (context) => MetaPage()))
                   }),
           ListTile(
               title: Text('Notas',
@@ -82,7 +82,11 @@ class NavDrawer extends StatelessWidget {
               leading: Icon(Icons.exit_to_app, color: Colors.white),
               title: Text('Logout',
                   style: TextStyle(color: Colors.white, fontSize: 15)),
-              onTap: () async => {await FirebaseAuth.instance.signOut()}),
+              onTap: () async => {
+                    await FirebaseAuth.instance.signOut(),
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()))
+                  }),
         ],
       ),
     ));
