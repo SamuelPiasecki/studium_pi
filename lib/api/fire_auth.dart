@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FireAuth {
@@ -12,7 +13,8 @@ class FireAuth {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       user = userCredential.user;
-      await user!.updateProfile(displayName: name);
+      await user!.updateDisplayName(name);
+      userSetup(name);
       await user.reload();
       user = auth.currentUser;
     } on FirebaseAuthException catch (e) {
@@ -47,4 +49,12 @@ class FireAuth {
     }
     return user;
   }
+}
+
+Future<void> userSetup(String displayName) async {
+  CollectionReference users = FirebaseFirestore.instance.collection('Users');
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String uid = auth.currentUser!.uid.toString();
+  users.add({'displayName': displayName, 'uid': uid});
+  return;
 }

@@ -48,10 +48,9 @@ class _AddMetaDialogWidgetState extends State<AddMetaDialogWidget> {
       return;
     } else {
       final meta = Meta(
-        id: DateTime.now().toString(),
+        id: '',
         title: title,
         description: description,
-        createdTime: DateTime.now(),
       );
 
       final provider = Provider.of<MetaProvider>(context, listen: false);
