@@ -15,27 +15,29 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MultiProvider(
-        providers: [
-          ChangeNotifierProvider<EventProvider>(
-            create: (context) => EventProvider(),
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<EventProvider>(
+          create: (context) => EventProvider(),
+        ),
+        ChangeNotifierProvider<MetaProvider>(
+          create: (context) => MetaProvider(),
+        ),
+      ],
+      child: MaterialApp(
+          title: 'Studium',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.grey[900],
+            fontFamily: 'Rubik',
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(secondary: Colors.indigo[800]),
           ),
-          ChangeNotifierProvider<MetaProvider>(
-            create: (context) => MetaProvider(),
-          ),
-        ],
-        child: MaterialApp(
-            title: 'Studium',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: Colors.grey[900],
-              fontFamily: 'Rubik',
-              colorScheme: ColorScheme.fromSwatch()
-                  .copyWith(secondary: Colors.indigo[800]),
-            ),
-            home: LoginPage(),
-            routes: {
-              'ForgotPassword.id': (context) => ForgotPassword(),
-            }),
-      );
+          home: LoginPage(),
+          routes: {
+            'ForgotPassword.id': (context) => ForgotPassword(),
+          }),
+    );
+  }
 }
