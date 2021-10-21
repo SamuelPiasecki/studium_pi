@@ -37,7 +37,7 @@ class _EditMetaPageState extends State<EditMetaPage> {
               onPressed: () {
                 final provider =
                     Provider.of<MetaProvider>(context, listen: false);
-                provider.removeMeta(widget.meta);
+                provider.deleteMeta(widget.meta);
 
                 Navigator.of(context).pop();
               },

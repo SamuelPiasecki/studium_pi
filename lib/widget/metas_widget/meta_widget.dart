@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/model/meta.dart';
-import 'package:studium_pi/pages/edit_meta_page.dart';
+import 'package:studium_pi/pages/metas/edit_meta_page.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
 import 'package:studium_pi/utilities/utils.dart';
 
@@ -52,13 +52,13 @@ class MetaWidget extends StatelessWidget {
               onChanged: (_) {
                 final provider =
                     Provider.of<MetaProvider>(context, listen: false);
-                final isDone = provider.toggleMetaStatus(meta);
+                provider.toggleMetaStatus(meta);
 
                 Utils.showSnackBar(
                     context,
-                    isDone
-                        ? 'Meta concluída'
-                        : 'Meta concluída como imcompleta');
+                    meta.isDone
+                        ? 'Meta concluída como incompleta'
+                        : 'Meta concluída ');
               },
             ),
             const SizedBox(width: 20),
@@ -91,7 +91,7 @@ class MetaWidget extends StatelessWidget {
 
   void deleteMeta(BuildContext context, Meta meta) {
     final provider = Provider.of<MetaProvider>(context, listen: false);
-    provider.removeMeta(meta);
+    provider.deleteMeta(meta);
 
     Utils.showSnackBar(context, 'Deletou essa tarefa');
   }

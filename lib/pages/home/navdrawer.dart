@@ -5,8 +5,7 @@ import 'package:studium_pi/pages/disciplina.dart';
 import 'package:studium_pi/pages/home/config.dart';
 import 'package:studium_pi/pages/sobre.dart';
 import 'package:studium_pi/pages/login/login_page.dart';
-import 'package:studium_pi/pages/meta_page.dart';
-import 'package:studium_pi/pages/nota.dart';
+import 'package:studium_pi/pages/metas/meta_page.dart';
 import 'package:studium_pi/pages/professor.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -19,10 +18,9 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           Container(
-            height: 75.0,
+            height: MediaQuery.of(context).size.height * 0.1,
             child: DrawerHeader(
                 child: Text('Studium',
-                    // textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -53,13 +51,6 @@ class NavDrawer extends StatelessWidget {
               onTap: () => {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MetaPage()))
-                  }),
-          ListTile(
-              title: Text('Notas',
-                  style: TextStyle(color: Colors.white, fontSize: 15)),
-              onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Nota()))
                   }),
           Divider(color: Colors.white),
           ListTile(

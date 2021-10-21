@@ -213,7 +213,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: 50.0),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.1),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 24.0),
                           child: Text('Studium',
@@ -227,6 +228,13 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Icon(
+                                Icons.home,
+                                size: 60,
+                              ),
+                              SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1),
                               _buildEmailTF(),
                               SizedBox(height: 15.0),
                               _buildPasswordTF(),
@@ -237,62 +245,6 @@ class _LoginPageState extends State<LoginPage> {
                                   : _buildLoginAndSignInBtn(),
                               SizedBox(height: 16.0),
                               _buildSignInTxt(),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 30.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    //Botão do Facebook
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 60.0,
-                                        width: 60.0,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black26,
-                                              offset: Offset(0, 2),
-                                              blurRadius: 6.0,
-                                            ),
-                                          ],
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/logos/facebook.jpg'),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    //Botão do Google
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 60.0,
-                                        width: 60.0,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black26,
-                                              offset: Offset(0, 2),
-                                              blurRadius: 6.0,
-                                            ),
-                                          ],
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/logos/google-logo.png'),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             ],
                           ),
                         ),
