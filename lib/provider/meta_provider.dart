@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,13 +17,6 @@ class MetaProvider extends ChangeNotifier {
   List<Meta> get metasCompletas =>
       _metas.where((meta) => meta.isDone == true).toList();
 
-  void setMetas(List<Meta> metas) =>
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
-        _metas = metas;
-
-        notifyListeners();
-      });
-
   Future<void> addMeta(Meta meta) {
     CollectionReference colRef = FirebaseFirestore.instance
         .collection('Users')
@@ -34,11 +26,9 @@ class MetaProvider extends ChangeNotifier {
     return colRef.doc(meta.id).set({
       'title': meta.title,
       'description': meta.description,
-      'name': FirebaseAuth.instance.currentUser!.displayName,
       'timestamp': DateTime.now().microsecondsSinceEpoch,
       'isDone': meta.isDone,
       'id': meta.id,
-      'uid': FirebaseAuth.instance.currentUser!.uid
     });
   }
 
@@ -67,7 +57,7 @@ class MetaProvider extends ChangeNotifier {
   Future<void> deleteMeta(Meta meta) {
     CollectionReference colRef = FirebaseFirestore.instance
         .collection('Users')
-        .doc(FirebaseAuth.instance.currentUser!.uid.toString())
+        .doc(uid)
         .collection('Metas');
     return colRef
         .doc(meta.id)
@@ -79,7 +69,7 @@ class MetaProvider extends ChangeNotifier {
   Future<void> updateMeta(Meta meta, String title, String description) {
     CollectionReference colRef = FirebaseFirestore.instance
         .collection('Users')
-        .doc(FirebaseAuth.instance.currentUser!.uid.toString())
+        .doc(uid)
         .collection('Metas');
     return colRef
         .doc(meta.id)
@@ -91,7 +81,7 @@ class MetaProvider extends ChangeNotifier {
   Future<void> toggleMetaStatus(Meta meta) {
     CollectionReference colRef = FirebaseFirestore.instance
         .collection('Users')
-        .doc(FirebaseAuth.instance.currentUser!.uid.toString())
+        .doc(uid)
         .collection('Metas');
     return colRef
         .doc(meta.id)
