@@ -230,7 +230,6 @@ class _EventoPageState extends State<EventoPage> {
         description: 'Descrição',
         from: fromDate,
         to: toDate,
-        isAllDay: false,
       );
 
       final isEditing = widget.event != null;

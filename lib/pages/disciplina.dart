@@ -26,7 +26,7 @@ class _DisciplinaState extends State<Disciplina> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add, size: 50),
+        child: Icon(Icons.add),
       ),
     );
   }

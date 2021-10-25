@@ -5,6 +5,7 @@ import 'package:studium_pi/pages/login/forgotpassword.dart';
 import 'package:studium_pi/pages/login/login_page.dart';
 import 'package:studium_pi/provider/event_provider.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
+import 'package:studium_pi/provider/prof_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ProfProvider>(
+          create: (context) => ProfProvider(),
+        ),
         ChangeNotifierProvider<EventProvider>(
           create: (context) => EventProvider(),
         ),

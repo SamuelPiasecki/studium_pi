@@ -6,7 +6,6 @@ class Event {
   final DateTime from;
   final DateTime to;
   final Color backgroundColor;
-  final bool isAllDay;
 
   const Event({
     required this.title,
@@ -14,6 +13,5 @@ class Event {
     required this.from,
     required this.to,
     this.backgroundColor = Colors.lightGreen,
-    this.isAllDay = false,
   });
 }

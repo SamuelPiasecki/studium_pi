@@ -15,7 +15,7 @@ class MetaPage extends StatefulWidget {
 class _MetaPageState extends State<MetaPage> {
   int selectedIndex = 0;
   final Stream<QuerySnapshot> snapshots =
-      FirebaseFirestore.instance.collection('metas').snapshots();
+      FirebaseFirestore.instance.collection('Metas').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class _MetaPageState extends State<MetaPage> {
           builder: (BuildContext context) => AddMetaDialogWidget(),
           barrierDismissible: false,
         ),
-        child: Icon(Icons.add, size: 50),
+        child: Icon(Icons.add),
       ),
     );
   }

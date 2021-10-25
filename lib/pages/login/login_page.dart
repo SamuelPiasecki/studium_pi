@@ -184,16 +184,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildSignInTxt() {
-    return Column(
-      children: [
-        Text('- OU -', style: sLabelStyle),
-        SizedBox(height: 20.0),
-        Text('Cadastre-se com', style: sLabelStyle),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -206,55 +196,56 @@ class _LoginPageState extends State<LoginPage> {
         body: FutureBuilder(
             future: _initializeFirebase(),
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.1),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 24.0),
-                          child: Text('Studium',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30)),
-                        ),
-                        Form(
-                          key: _formKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.home,
-                                size: 60,
-                              ),
-                              SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1),
-                              _buildEmailTF(),
-                              SizedBox(height: 15.0),
-                              _buildPasswordTF(),
-                              _buildForgotPasswordBtn(),
-                              SizedBox(height: 24.0),
-                              _isProcessing
-                                  ? CircularProgressIndicator()
-                                  : _buildLoginAndSignInBtn(),
-                              SizedBox(height: 16.0),
-                              _buildSignInTxt(),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
                 );
               }
-              return Center(
-                child: CircularProgressIndicator(),
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.1),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 24.0),
+                        child: Text('Studium',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30)),
+                      ),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        child: Image.asset('assets/icon/icon_app.png',
+                            fit: BoxFit.fill),
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.1),
+                            _buildEmailTF(),
+                            SizedBox(height: 15.0),
+                            _buildPasswordTF(),
+                            _buildForgotPasswordBtn(),
+                            SizedBox(height: 24.0),
+                            _isProcessing
+                                ? CircularProgressIndicator()
+                                : _buildLoginAndSignInBtn(),
+                            SizedBox(height: 16.0),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               );
             }),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/model/meta.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
+import 'package:studium_pi/utilities/constants.dart';
 import 'package:studium_pi/widget/metas_widget/meta_form_widget.dart';
 
 class EditMetaPage extends StatefulWidget {
@@ -31,6 +32,8 @@ class _EditMetaPageState extends State<EditMetaPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text('Editar Meta'),
+          backgroundColor: colorAppBar,
+          centerTitle: true,
           actions: [
             IconButton(
               icon: Icon(Icons.delete),

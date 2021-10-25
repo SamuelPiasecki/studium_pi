@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studium_pi/pages/disciplina.dart';
 import 'package:studium_pi/pages/home/config.dart';
+import 'package:studium_pi/pages/professores/professor_page.dart';
 import 'package:studium_pi/pages/sobre.dart';
 import 'package:studium_pi/pages/login/login_page.dart';
 import 'package:studium_pi/pages/metas/meta_page.dart';
-import 'package:studium_pi/pages/professor.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -18,7 +18,7 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: MediaQuery.of(context).size.height * 0.15,
             child: DrawerHeader(
                 child: Text('Studium',
                     style: TextStyle(
@@ -42,8 +42,10 @@ class NavDrawer extends StatelessWidget {
               title: Text('Professores',
                   style: TextStyle(color: Colors.white, fontSize: 15)),
               onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Professor()))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfessorPage()))
                   }),
           ListTile(
               title: Text('Metas',
