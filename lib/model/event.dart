@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Event {
-  final String title;
-  final String description;
-  final DateTime from;
-  final DateTime to;
-  final Color backgroundColor;
+  String title;
+  String description;
+  DateTime from;
+  DateTime to;
+  Color backgroundColor;
+  String id;
 
-  const Event({
-    required this.title,
-    required this.description,
-    required this.from,
-    required this.to,
-    this.backgroundColor = Colors.lightGreen,
-  });
+  Event(
+      {required this.title,
+      required this.description,
+      required this.from,
+      required this.to,
+      this.backgroundColor = Colors.lightGreen,
+      required this.id});
 }

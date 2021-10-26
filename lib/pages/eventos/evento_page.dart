@@ -17,6 +17,7 @@ class EventoPage extends StatefulWidget {
 class _EventoPageState extends State<EventoPage> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  final descController = TextEditingController();
   late DateTime fromDate;
   late DateTime toDate;
 
@@ -31,6 +32,7 @@ class _EventoPageState extends State<EventoPage> {
       final event = widget.event!;
 
       titleController.text = event.title;
+      descController.text = event.description;
       fromDate = event.from;
       toDate = event.to;
     }
@@ -61,6 +63,8 @@ class _EventoPageState extends State<EventoPage> {
               children: [
                 buildTitle(),
                 SizedBox(height: 12),
+                buildDesc(),
+                SizedBox(height: 12),
                 buildDatetimePickers(),
               ],
             ),
@@ -75,7 +79,7 @@ class _EventoPageState extends State<EventoPage> {
             shadowColor: Colors.transparent,
           ),
           icon: Icon(Icons.done),
-          label: Text('SAVE'),
+          label: Text('SALVAR'),
           onPressed: saveForm,
         ),
       ];
@@ -89,6 +93,15 @@ class _EventoPageState extends State<EventoPage> {
             ? 'O Título não pode estar vazio'
             : null,
         controller: titleController,
+      );
+
+  Widget buildDesc() => TextFormField(
+        maxLines: 3,
+        style: TextStyle(fontSize: 24),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), hintText: 'Adicione Descrição'),
+        onFieldSubmitted: (_) => saveForm(),
+        controller: descController,
       );
 
   Widget buildDatetimePickers() => Column(
@@ -227,9 +240,10 @@ class _EventoPageState extends State<EventoPage> {
     if (isValid) {
       final event = Event(
         title: titleController.text,
-        description: 'Descrição',
+        description: descController.text,
         from: fromDate,
         to: toDate,
+        id: '',
       );
 
       final isEditing = widget.event != null;
@@ -239,7 +253,7 @@ class _EventoPageState extends State<EventoPage> {
         provider.editEvent(event, widget.event!);
         Navigator.of(context).pop();
       } else {
-        provider.addEvent(event);
+        provider.addEvento(event);
       }
 
       Navigator.of(context).pop();
