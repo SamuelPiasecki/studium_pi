@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/pages/login/forgotpassword.dart';
 import 'package:studium_pi/pages/login/login_page.dart';
+import 'package:studium_pi/provider/disc_provider.dart';
 import 'package:studium_pi/provider/event_provider.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
 import 'package:studium_pi/provider/prof_provider.dart';
@@ -19,6 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<DiscProvider>(
+          create: (context) => DiscProvider(),
+        ),
         ChangeNotifierProvider<ProfProvider>(
           create: (context) => ProfProvider(),
         ),
@@ -30,6 +35,14 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('pt'),
+          ],
+          locale: const Locale('pt'),
           title: 'Studium',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(

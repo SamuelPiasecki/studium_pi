@@ -17,6 +17,12 @@ class MetaProvider extends ChangeNotifier {
   List<Meta> get metasCompletas =>
       _metas.where((meta) => meta.isDone == true).toList();
 
+  @override
+  void dispose() {
+    _metaSubscription!.cancel();
+    super.dispose();
+  }
+
   Future<void> addMeta(Meta meta) {
     CollectionReference colRef = FirebaseFirestore.instance
         .collection('Users')

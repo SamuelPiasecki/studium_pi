@@ -49,6 +49,7 @@ class EventViewingPage extends StatelessWidget {
           onPressed: () {
             final provider = Provider.of<EventProvider>(context, listen: false);
             provider.deleteEvent(event);
+            Navigator.of(context).pop();
           },
         ),
       ];

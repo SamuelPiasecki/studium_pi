@@ -17,22 +17,23 @@ class ProfWidget extends StatelessWidget {
           barrierDismissible: true,
         ),
         child: Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(20),
-            child: Row(
-              children: [
-                Icon(Icons.account_circle, size: 30),
-                SizedBox(width: 20),
-                Text(
-                  prof.nome,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 22,
-                  ),
+          color: Colors.white,
+          padding: EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Icon(Icons.account_circle, size: 30),
+              SizedBox(width: 20),
+              Text(
+                prof.nome,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 22,
                 ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
