@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:studium_pi/model/disciplina.dart';
+import 'package:studium_pi/pages/disciplina/view_disciplina.dart';
+import 'package:studium_pi/provider/disc_provider.dart';
 import 'package:studium_pi/utilities/constants.dart';
 import 'package:studium_pi/utilities/utils.dart';
 import 'package:weekday_selector/weekday_selector.dart';
 
 class DisciplinaPage extends StatefulWidget {
+  final Disciplina? disc;
+
+  const DisciplinaPage({Key? key, this.disc}) : super(key: key);
+
   @override
   _DisciplinaPageState createState() => _DisciplinaPageState();
 }
@@ -19,18 +27,17 @@ class _DisciplinaPageState extends State<DisciplinaPage> {
   void initState() {
     super.initState();
 
-    // if (widget.event == null) {
-    startTime = DateTime.now();
-    endTime = DateTime.now().add(Duration(hours: 2));
-    //}
-    /*else {
-      final event = widget.event!;
+    if (widget.disc == null) {
+      startTime = DateTime.now();
+      endTime = DateTime.now().add(Duration(hours: 2));
+    } else {
+      final disc = widget.disc!;
 
-      titleController.text = event.title;
-      descController.text = event.description;
-      fromDate = event.from;
-      toDate = event.to;
-    }*/
+      nomeController.text = disc.nome;
+      startTime = disc.startTime;
+      endTime = disc.endTime;
+      values = List.from(disc.weekDays);
+    }
   }
 
   @override
@@ -195,17 +202,24 @@ class _DisciplinaPageState extends State<DisciplinaPage> {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      /*final isEditing = widget.event != null;
-      final provider = Provider.of<EventProvider>(context, listen: false);
+      final disc = Disciplina(
+          nome: nomeController.text,
+          startTime: startTime,
+          endTime: endTime,
+          id: '',
+          weekDays: List.from(values));
 
+      final isEditing = widget.disc != null;
+      final provider = Provider.of<DiscProvider>(context, listen: false);
       if (isEditing) {
-        provider.updateEvent(event, widget.event!);
-        Navigator.of(context).pop();
+        provider.updateDisc(disc, widget.disc!);
       } else {
-        provider.addEvent(event);
-      }*/
+        provider.addDisc(disc);
+      }
 
       Navigator.of(context).pop();
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => ViewDisciplina()));
     }
   }
 }

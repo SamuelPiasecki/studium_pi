@@ -3,11 +3,12 @@ class Disciplina {
   DateTime startTime;
   DateTime endTime;
   String id;
+  List<bool> weekDays;
 
-  Disciplina({
-    required this.nome,
-    required this.startTime,
-    required this.endTime,
-    required this.id,
-  });
+  Disciplina(
+      {required this.nome,
+      required this.startTime,
+      required this.endTime,
+      required this.id,
+      required this.weekDays});
 }

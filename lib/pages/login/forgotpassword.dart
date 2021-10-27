@@ -16,7 +16,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   passwordReset() async {
     try {
       _formKey.currentState!.save();
-      final user = await auth.sendPasswordResetEmail(email: email!);
+      await auth.sendPasswordResetEmail(email: email!);
     } catch (e) {
       print(e);
     }

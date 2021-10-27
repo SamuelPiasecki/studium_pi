@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:studium_pi/model/prof.dart';
 
@@ -13,6 +11,12 @@ class ProfProvider extends ChangeNotifier {
       FirebaseFirestore.instance.collection('Users');
 
   List<Prof> _profs = [];
+
+  @override
+  void dispose() {
+    _profSubscription!.cancel();
+    super.dispose();
+  }
 
   List<Prof> get profs => _profs;
 
@@ -27,7 +31,6 @@ class ProfProvider extends ChangeNotifier {
       'email': prof.email,
       'disciplina': prof.disciplina,
       'telefone': prof.telefone,
-      //'timestamp': DateTime.now().microsecondsSinceEpoch,
       'id': prof.id
     });
   }
