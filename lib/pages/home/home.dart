@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final isDialOpen = ValueNotifier(false);
+  String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +42,11 @@ class _HomeState extends State<Home> {
         appBar: appBar,
         backgroundColor: colorBackgroundApp,
         body: StreamBuilder<Object>(
-            stream:
-                FirebaseFirestore.instance.collection('Eventos').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('Users')
+                .doc(uid)
+                .collection('Eventos')
+                .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(

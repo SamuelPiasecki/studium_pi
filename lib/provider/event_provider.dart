@@ -20,6 +20,12 @@ class EventProvider extends ChangeNotifier {
 
   StreamSubscription<QuerySnapshot>? _eventoSubscription;
 
+  @override
+  void dispose() {
+    _eventoSubscription!.cancel();
+    super.dispose();
+  }
+
   void readEventos(Object? eventos) {
     _eventoSubscription = FirebaseFirestore.instance
         .collection('Users')

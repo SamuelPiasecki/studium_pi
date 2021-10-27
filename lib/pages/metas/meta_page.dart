@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/provider/meta_provider.dart';
@@ -14,8 +15,7 @@ class MetaPage extends StatefulWidget {
 
 class _MetaPageState extends State<MetaPage> {
   int selectedIndex = 0;
-  final Stream<QuerySnapshot> snapshots =
-      FirebaseFirestore.instance.collection('Metas').snapshots();
+  String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,11 @@ class _MetaPageState extends State<MetaPage> {
       appBar: appBar,
       backgroundColor: Colors.white.withOpacity(0.9),
       body: StreamBuilder(
-          stream: snapshots,
+          stream: FirebaseFirestore.instance
+              .collection('Users')
+              .doc(uid)
+              .collection('Metas')
+              .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return buildText('${snapshot.error}');
