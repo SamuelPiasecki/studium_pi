@@ -13,17 +13,8 @@ class CalendarWidget extends StatelessWidget {
 
     return SfCalendar(
       view: CalendarView.month,
-      allowedViews: [
-        CalendarView.day,
-        CalendarView.week,
-        CalendarView.workWeek,
-        CalendarView.month,
-        CalendarView.timelineDay,
-        CalendarView.timelineWeek,
-        CalendarView.timelineWorkWeek
-      ],
       controller: _controller,
-      onTap: (CalendarTapDetails details) {
+      /* onTap: (CalendarTapDetails details) {
         if (_controller.view == CalendarView.month &&
             details.targetElement == CalendarElement.calendarCell) {
           _controller.view = CalendarView.day;
@@ -32,7 +23,7 @@ class CalendarWidget extends StatelessWidget {
             details.targetElement == CalendarElement.viewHeader) {
           _controller.view = CalendarView.day;
         }
-      },
+      },*/
       monthViewSettings: MonthViewSettings(
           navigationDirection: MonthNavigationDirection.horizontal),
       timeZone: 'E. South America Standard Time',

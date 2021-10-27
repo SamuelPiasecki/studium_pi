@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studium_pi/pages/disciplina/disciplina_page.dart';
@@ -19,6 +20,7 @@ class _ViewDisciplinaState extends State<ViewDisciplina> {
     centerTitle: true,
     backgroundColor: colorAppBar,
   );
+  String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,11 @@ class _ViewDisciplinaState extends State<ViewDisciplina> {
       appBar: appBar,
       backgroundColor: Colors.white.withOpacity(0.9),
       body: StreamBuilder(
-        stream:
-            FirebaseFirestore.instance.collection('Disciplinas').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('Users')
+            .doc(uid)
+            .collection('Disciplinas')
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
