@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:studium_pi/pages/disciplina.dart';
+import 'package:studium_pi/pages/disciplina/disciplina_page.dart';
 import 'package:studium_pi/pages/home/config.dart';
 import 'package:studium_pi/pages/professores/professor_page.dart';
 import 'package:studium_pi/pages/sobre.dart';
@@ -35,8 +35,10 @@ class NavDrawer extends StatelessWidget {
               title: Text('Disciplinas',
                   style: TextStyle(color: Colors.white, fontSize: 15)),
               onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Disciplina()))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DisciplinaPage()))
                   }),
           ListTile(
               title: Text('Professores',

@@ -41,7 +41,7 @@ class _EventoPageState extends State<EventoPage> {
   @override
   void dispose() {
     titleController.dispose();
-
+    descController.dispose();
     super.dispose();
   }
 
@@ -250,10 +250,10 @@ class _EventoPageState extends State<EventoPage> {
       final provider = Provider.of<EventProvider>(context, listen: false);
 
       if (isEditing) {
-        provider.editEvent(event, widget.event!);
+        provider.updateEvent(event, widget.event!);
         Navigator.of(context).pop();
       } else {
-        provider.addEvento(event);
+        provider.addEvent(event);
       }
 
       Navigator.of(context).pop();

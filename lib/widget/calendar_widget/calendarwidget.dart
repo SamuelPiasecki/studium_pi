@@ -12,7 +12,7 @@ class CalendarWidget extends StatelessWidget {
     final events = Provider.of<EventProvider>(context).events;
 
     return SfCalendar(
-      view: CalendarView.week,
+      view: CalendarView.month,
       allowedViews: [
         CalendarView.day,
         CalendarView.week,
@@ -34,7 +34,7 @@ class CalendarWidget extends StatelessWidget {
         }
       },
       monthViewSettings: MonthViewSettings(
-          navigationDirection: MonthNavigationDirection.vertical),
+          navigationDirection: MonthNavigationDirection.horizontal),
       timeZone: 'E. South America Standard Time',
       dataSource: EventDataSource(events),
       initialSelectedDate: DateTime.now(),
